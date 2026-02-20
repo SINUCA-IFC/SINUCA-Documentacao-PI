@@ -1,20 +1,20 @@
 # Projeto Integrador - Modelo
-*(Coloque aqui o nome do seu projeto.)*
+## SINUCA
 
-Um modelo para o desenvolvimento do Projeto Integrador do Curso de Técnico em Desenvolvimento de Sistemas para a Internet Integrado ao Ensino Médio do IFC - Campus Araquari.
-*(Coloque aqui uma breve descrição do seu projeto.)*
+Aplicação que tem como objetivo apoiar o desenvolvimento do projeto SINUCA (Simulado Interdiciplinar das Nações Unidas do Campus Araquari), de modo que funcione como ferramenta para a realização do mesmo e que promova a comunicação entre a gestão do projeto e os discentes participantes.
 
 **IMPORTANTE**: [**Cadastre seu projeto nesta planilha**](https://docs.google.com/spreadsheets/d/1bSb1-S9qOf46fNH8quyoFpcjcTuBMj_EdSPchOuFULY/edit?usp=sharing).
 
-Professor: [Marco André Mendes](github.com/marcoandre)
+Professor: [Marco André Mendes](https://github.com/marcoandre)
 
 Equipe:
-- [Aluno1](github.com/aluno1)
-- [Aluno2](github.com/aluno2)
+- [Carlos Henrique Pereira Santos](https://github.com/carloshenriqueok)
+- [Maria Carolina da Silveira](https://github.com/maricarols)
+- [Maria Clara Pavanello Giareta](https://github.com/MCPavanello)
+- [Pedro Gabriel Gonçalves](https://github.com/PedGabriel)
 
 Links do projeto:
-(*Coloque aqui os links para a documentação do projeto e os repositórios e plubicação do backend e frontend.*)
--   [Documentação (esse documento)](github.com/marcoandre/pi-modelo)
+-   [Documentação (esse documento)](https://github.com/SINUCA-IFC/SINUCA-Documentacao-PI)
 -   Backend: [Repositório](github.com/marcoandre/pi-backend) e [Publicação](https://pi-backend.herokuapp.com/)
 -   Frontend: [Repositório](github.com/marcoandre/pi-frontend) e [Publicação](https://pi-frontend.herokuapp.com/)
 
