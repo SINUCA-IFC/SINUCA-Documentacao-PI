@@ -18,18 +18,6 @@ Links do projeto:
 -   Backend: [Repositório](github.com/marcoandre/pi-backend) e [Publicação](https://pi-backend.herokuapp.com/)
 -   Frontend: [Repositório](github.com/marcoandre/pi-frontend) e [Publicação](https://pi-frontend.herokuapp.com/)
 
-**Como usar esse modelo para o Projeto Integrador**
-
-*(Essa parte pode ser apagada depois.)*
-
-1. Faça um fork desse repositório para a sua conta do GitHub.
-2. Clone o repositório para o seu computador.
-3. Abra o arquivo README.md no seu editor de texto favorito (recomendamos o [Visual Studio Code](https://code.visualstudio.com/)).
-4. Tenha instaladas as seguintes extensões:
-   - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-   - [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
-5. Edite o arquivo README.md com as informações do seu projeto.
-
 # 1. Desenvolvimento
 
 **1.1.3 Ordem de Serviço (O.S.)**
@@ -37,25 +25,21 @@ Links do projeto:
 # 2. Situação Problema
 
 O SINUCA (Simulado Interdisciplinar das Nações Unidas do Campus Araquari) trata-se de um evento anual realizado no IFC, destinado a integrar a comunidade do instituto, bem como incentivar o multiculturalismo, o debate democrático e o cultivo de uma comunidade mais unida por meio da dialética e da cooperação. O evento existe desde 2018, sendo organizado pelo professor Edvanderson Ramalho em parceria com os demais docentes e alunos, que, em dois dias mostram o trabalho desenvolvido por meses, atuando por meio de debates, mesas de cooperação e apresentações culturais de modo a  performar a pluralidade de conhecimentos desenvolvidos durante a organização do projeto. Entretanto, o simulado tem enfrentado algumas barreiras para o pleno funcionamento do projeto. Tais problemas podem ser vistos sobre 2 principais aspectos: A falta de uma boa comunicação e a descentralização das mídias.
+
 Durante o desenvolvimento da última edição do evento foi percebido que houve uma falha de comunicação decorrida da falta de um ambiente destinado às especificidades do SINUCA. Deste modo, a interação entre a organização e às delegações passou a ser prejudicada pela distribuição desigual das informações, gerando um conjunto de dúvidas e lapsos informacionais.
+
 Além disso, foi notado o desprovimento de um espaço designado para as mídias e informações do projeto, o que dificultou a divulgação e a organização dos materiais. Portanto, impossibilitou o acesso às notícias e conteúdos passados, causando um distanciamento entre os envolvidos.
+
 Sendo assim, o desenvolvimento de uma aplicação que permita a plena comunicação entre os participantes e a centralização das mídias e informações é necessário para a organização e aplicação do SINUCA.
 
 
 # 3. Descrição da proposta
 
-Após entender o problema, proponha uma solução que será útil nos aspectos de dificuldade encontrados. Assim, aqui você deverá **explicar de maneira resumida, e preferencialmente mais textual, como o software funcionará**. Pense nesse texto como uma **introdução ao seu cliente** do que você pretende fazer por ele, para que ele confirme se realmente está dentro do desejado e permita sua continuidade.
+A proposta consiste no desenvolvimento de uma aplicação web com o objetivo de centralizar a comunicação e as informações do SINUCA em um único ambiente. O foco principal do sistema será facilitar o compartilhamento de avisos, materiais e atualizações, evitando falhas na comunicação entre a organização e os participantes.
 
-**Alguns pontos importantes a se destacar são:**
+O sistema contará com três níveis de usuário: administradores (equipe organizadora), responsáveis por gerenciar conteúdos, publicar avisos e atualizar informações; avaliadores, que auxiliarão na organização durante o evento e serão responsáveis por atribuir notas às delegações; e participantes, que poderão acessar conteúdos, acompanhar comunicados e esclarecer dúvidas.
 
--   **Qual o foco de ação do software** relacionado com os problemas levantados na análise da situação-problema. O que realmente o software vai fazer. Por exemplo, o foco de ação do Gmail é permitir o envio e recebimento de e-mails.
--   **Os níveis de usuário do sistema**. Somente o gestor tem acesso? E os funcionários? Talvez seja para ambos, ou para funcionários de cargos
-    diferentes, etc.
--   **O que poderá ser feito no software**.Apenas o principal, sem pensar em telas ou detalhes específicos, pois isso será feito em outro momento.
--   **Se houver mais de um nível de usuário**, ressaltar as diferenças entre eles na descrição da proposta.
-
-Tenha em mente que essa é uma etapa relativamente breve. Não é necessário um texto gigantesco, apenas dar uma noção do funcionamento do sistema. Mais adiante
-precisaremos ser bem detalhistas, todavia agora a intenção é apenas fazer algo que permita ao cliente nos dizer se estamos no caminho certo.
+Dentro da plataforma, será possível acessar cronogramas, materiais de apoio, mídias do evento e um espaço para comunicação. Assim, a aplicação busca tornar o SINUCA mais organizado, acessível e integrado para todos os envolvidos.
 
 # 4. Modelagem de Dados
 
