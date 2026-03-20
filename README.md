@@ -36,11 +36,11 @@ Links do projeto:
 
 # 2. Situação Problema
 
+O SINUCA (Simulado Interdisciplinar das Nações Unidas do Campus Araquari) trata-se de um evento anual realizado no IFC, destinado a integrar a comunidade do instituto, bem como incentivar o multiculturalismo, o debate democrático e o cultivo de uma comunidade mais unida por meio da dialética e da cooperação. O evento existe desde 2018, sendo organizado pelo professor Edvanderson Ramalho em parceria com os demais docentes e alunos, que, em dois dias mostram o trabalho desenvolvido por meses, atuando por meio de debates, mesas de cooperação e apresentações culturais de modo a  performar a pluralidade de conhecimentos desenvolvidos durante a organização do projeto. Entretanto, o simulado tem enfrentado algumas barreiras para o pleno funcionamento do projeto. Tais problemas podem ser vistos sobre 2 principais aspectos: A falta de uma boa comunicação e a descentralização das mídias.
+Durante o desenvolvimento da última edição do evento foi percebido que houve uma falha de comunicação decorrida da falta de um ambiente destinado às especificidades do SINUCA. Deste modo, a interação entre a organização e às delegações passou a ser prejudicada pela distribuição desigual das informações, gerando um conjunto de dúvidas e lapsos informacionais.
+Além disso, foi notado o desprovimento de um espaço designado para as mídias e informações do projeto, o que dificultou a divulgação e a organização dos materiais. Portanto, impossibilitou o acesso às notícias e conteúdos passados, causando um distanciamento entre os envolvidos.
+Sendo assim, o desenvolvimento de uma aplicação que permita a plena comunicação entre os participantes e a centralização das mídias e informações é necessário para a organização e aplicação do SINUCA.
 
-
--   **Introdução**: comece com um parágrafo apresentando a empresa (nome, o que faz, tempo de existência, o dono, funcionários, etc);
--   **Situação-problema**: Aborde em detalhes como a empresa funciona, procurando seguir uma ordem lógica dos acontecimentos e organizando parágrafos diferentes para cada coisa diferente que for explicar (como faria em uma redação);
--   **Conclusão**: tenha um parágrafo de conclusão focando nos problemas que você notou dentro da situação problema analisada e aponte brevemente como um software poderia ajudar a resolvê-los.
 
 # 3. Descrição da proposta
 
