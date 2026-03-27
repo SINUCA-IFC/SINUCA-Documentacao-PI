@@ -43,7 +43,7 @@ Dentro da plataforma, será possível acessar cronogramas, materiais de apoio, m
 
 # 4. Modelagem de Dados
 
-<img width="751" height="533" alt="image" src="https://github.com/user-attachments/assets/4177734c-11a0-42ef-ad65-15f59c627d7c" />
+<img width="1003" height="618" alt="image" src="https://github.com/user-attachments/assets/4a8d753f-ec73-4079-85c5-0c4b4f356a25" />
 
 
 
