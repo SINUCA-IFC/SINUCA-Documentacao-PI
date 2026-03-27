@@ -43,9 +43,7 @@ Dentro da plataforma, será possível acessar cronogramas, materiais de apoio, m
 
 # 4. Modelagem de Dados
 
-(*Nessa parte a equipe deve descrever a modelagem de dados que será implementada no sistema. O texto abaixo descreve o que essa etapa deve conter e pode ser apagado depois.*)
-
-Defina as entidades e relacionamentos que farão parte do sistema. Desenhe o diagrama de entidade-relacionamento (DER) e descreva as entidades e relacionamentos que farão parte do sistema.
+<img width="751" height="533" alt="image" src="https://github.com/user-attachments/assets/4177734c-11a0-42ef-ad65-15f59c627d7c" />
 
 
 
