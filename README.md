@@ -15,8 +15,8 @@ Equipe:
 
 Links do projeto:
 -   [Documentação (esse documento)](https://github.com/SINUCA-IFC/SINUCA-Documentacao-PI)
--   Backend: [Repositório](github.com/marcoandre/pi-backend) e [Publicação](https://pi-backend.herokuapp.com/)
--   Frontend: [Repositório](github.com/marcoandre/pi-frontend) e [Publicação](https://pi-frontend.herokuapp.com/)
+-   Backend: [Repositório](https://github.com/SINUCA-IFC/SINUCA-BACK.git) e [Publicação](https://sinuca-backend.class.fabricadesoftware.ifc.edu.br/)
+-   Frontend: [Repositório](https://github.com/SINUCA-IFC/SINUCA-FRONT.git) e [Publicação](https://sinuca-front.vercel.app/)
 
 # 1. Desenvolvimento
 
