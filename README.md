@@ -18,6 +18,11 @@ Links do projeto:
 -   Backend: [Repositório](https://github.com/SINUCA-IFC/SINUCA-BACK.git) e [Publicação](https://sinuca-backend.class.fabricadesoftware.ifc.edu.br/)
 -   Frontend: [Repositório](https://github.com/SINUCA-IFC/SINUCA-FRONT.git) e [Publicação](https://sinuca-ifc.vercel.app/)
 
+Users:
+Adm: a@a.com
+Aluno: aluA@alu.com e aluB@alu.com
+A senha de todos é teste.123
+
 # 1. Desenvolvimento
 
 **1.1.3 Ordem de Serviço (O.S.)**
