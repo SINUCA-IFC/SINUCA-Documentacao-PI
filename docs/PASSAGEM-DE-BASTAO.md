@@ -140,6 +140,18 @@ Web Push usa **Push API + VAPID + Service Worker**, sem Firebase. Eventos existe
 
 Permissão de push deve ser solicitada por ação do usuário; permissão negada depende das configurações do navegador. Mensagens não lidas continuam funcionando sem push. O Service Worker guarda o shell público; **não armazena respostas privadas da API**. A PWA pode abrir o shell sem conexão, mas não oferece edição offline de tarefas ou chat. [Guia de notificações](https://github.com/SINUCA-IFC/SINUCA-FRONT/blob/main/docs/NOTIFICACOES.md).
 
+### Tela “Como utilizar” — tarefa pendente
+
+Criar uma tela de ajuda “Como utilizar”, acessível pelo menu da aplicação e também antes do login, com linguagem simples, passos curtos e imagens ilustrativas das páginas. O objetivo é ensinar o participante a usar o site sem depender da documentação técnica.
+
+O tutorial deve explicar cadastro e confirmação de e-mail, espera pela atribuição de delegação, mural, história, tarefas/Kanban, cronogramas, documentos, perfil, chat e notificações. Separar as orientações por perfil: aluno e organizador têm ações diferentes. Incluir o avaliador quando seu painel estiver implementado; não apresentar funções futuras como disponíveis.
+
+Incluir um guia para **instalar o app no celular como PWA**, com instruções específicas para cada combinação de sistema e navegador suportada, por exemplo Android/Chrome e iPhone/Safari. Permitir que a pessoa selecione seu navegador/sistema caso a identificação automática não corresponda ao dispositivo. Mostrar onde encontrar a opção de instalação ou de adicionar à tela inicial, como abrir o app instalado e como continuar pelo navegador quando a instalação não estiver disponível. Conferir os passos e capturas nas versões usadas pela comunidade, pois os nomes e menus podem mudar.
+
+Explicar separadamente como autorizar notificações, o que fazer quando a permissão foi negada e as limitações de suporte no dispositivo. Instalar o app e conceder permissão para notificações são ações diferentes. Informar que o cache permite abrir o shell público, mas não oferece edição offline de tarefas ou chat.
+
+Critérios de aceite: ajuda acessível no celular e desktop; instruções correspondentes às telas e permissões reais; guia de instalação validado nos navegadores/sistemas suportados; alternativa clara quando não houver instalação ou push; conteúdo revisado quando a interface ou o fluxo mudar. Validar a clareza do tutorial com usuários iniciantes antes da estreia em 2027.
+
 ## 6. Mapa do código e dos dados
 
 | Local | Responsabilidade |
@@ -344,6 +356,7 @@ A tabela reúne pendências de código, integração e operação. Confirmar cad
 | Planejamento | PDF enviado não é integrado ao fluxo de links; ordem manual do Kanban não persiste; categorias de mural não existem. | Confirmar requisitos antes de acrescentar entidades, campos e telas. |
 | Planejamento | O router não tem tela 404. Atividades do perfil exigem detalhes por tarefa e o chat recarrega histórico inteiro periodicamente; a criação de delegação depende da bandeira em CDN externa. | Acrescentar tratamento de rota desconhecida e medir consultas/volume; planejar paginação incremental e alternativa para a bandeira quando necessário. |
 | Conteúdo | A história de cada edição precisa disponibilizar o álbum de fotos correspondente no Google Drive. | Obter o link com a organização, posicioná-lo junto ao texto da edição e testar identificação do ano e acesso à pasta. |
+| Usabilidade | Falta uma tela “Como utilizar” com tutoriais das páginas e da instalação no celular. | Implementar RF023, separar orientações por perfil e sistema/navegador, explicar notificações e validar o guia com usuários iniciantes antes da estreia em 2027. |
 | Planejamento | O mural ainda não oferece filtro de postagens por ano. | Avaliar quando houver mais de um ano de funcionamento; validar ano de publicação versus edição com Edvanderson e preservar paginação. |
 | Alta, antes de 2027 | O primeiro uso no evento será em 2027 e exige uma versão publicada e homologada. | Preparar novo deploy de front/back a partir de uma branch específica de publicação, possivelmente main; confirmar a configuração da hospedagem e registrar commits e homologação. |
 | Operação | Cron de atrasos, entrega SMTP/Google/push, backups, restrições de cookies e versão de Python dependem da implantação. | Registrar responsáveis e evidências de homologação; não marcar como resolvido somente por testes locais. |

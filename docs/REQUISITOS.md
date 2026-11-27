@@ -30,6 +30,7 @@ Os identificadores RF001–RF014 preservam a referência da especificação ante
 | RF020 | Recuperar/alterar senha com confirmação, expiração e tratamento de erros. | Fluxo integrado ao site pendente. |
 | RF021 | Disponibilizar o link do Google Drive com as fotos de cada edição junto à história daquela edição, identificado pelo ano e acessível ao público previsto. | Tarefa pendente; obter e conferir os links com a organização. |
 | RF022 | Permitir filtrar as postagens do mural por ano, com paginação consistente e acesso aos anos anteriores. | Possibilidade futura para quando houver mais de um ano de funcionamento; definir com Edvanderson se o ano se refere à publicação ou à edição. Não implementado. |
+| RF023 | Disponibilizar uma tela “Como utilizar”, com tutoriais das páginas por perfil e orientações de instalação do app no celular conforme navegador e sistema operacional. | Requisito futuro; conteúdo e acesso à ajuda ainda precisam ser implementados e validados. |
 
 ## Regras de negócio
 
