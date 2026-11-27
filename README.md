@@ -1,3 +1,9 @@
+## Documentação técnica e continuidade
+
+- [Passagem de bastão: funcionamento, operação e pendências](docs/PASSAGEM-DE-BASTAO.md).
+- [Revisão recomendada da documentação PI](docs/REVISAO-DOCUMENTACAO-PI.md).
+- [Registro histórico de validação de 25/11/2026](docs/historico/2026-11-25-passagem-de-bastao.md).
+
 # Projeto Integrador - Modelo
 ## SINUCA
 
