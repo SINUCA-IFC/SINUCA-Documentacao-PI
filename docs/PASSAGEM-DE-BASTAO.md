@@ -43,7 +43,7 @@ O login Google usa **diretamente a origem da API**, com cookies e CSRF. O callba
 
 ### Product Owner / cliente e contato com a próxima equipe
 
-**Edvanderson, professor de Geografia do instituto, é o Product Owner (PO) e cliente do SINUCA.** O primeiro nome é suficiente para a próxima equipe identificá-lo na instituição.
+**Edvanderson, professor de Geografia do instituto, é o Product Owner (PO) e cliente do SINUCA.**
 
 Manter contato com o professor durante a continuidade do projeto para esclarecer dúvidas, confirmar requisitos e validar as entregas. Em decisões fundamentais do evento, como notas, critérios de avaliação, modalidades e regras de participação, **a decisão final é de Edvanderson**. A inclusão e a prioridade de novas funcionalidades também devem ser alinhadas e aprovadas por ele. Sugestões da equipe e da organização devem ser levadas ao professor; em caso de divergência sobre o produto, prevalece a decisão dele.
 
