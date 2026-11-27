@@ -6,7 +6,7 @@ O Simulado Interdisciplinar das Nações Unidas do Campus Araquari reúne delega
 
 **Product Owner / cliente: Edvanderson, professor de Geografia do instituto.** A próxima equipe pode identificá-lo pelo primeiro nome. Manter contato para esclarecer dúvidas, validar entregas e definir prioridades. A decisão final sobre notas, modalidades, regras do evento e novas funcionalidades é dele.
 
-Professor orientador do desenvolvimento: [Marco André Mendes](https://github.com/marcoandre).
+Professores orientadores do desenvolvimento: [Marco André Mendes](https://github.com/marcoandre), [Eduardo da Silva](https://github.com/eduardo-da-silva) e Professor Edvanderson Ramalho dos Santos.
 
 Equipe de 2026:
 
