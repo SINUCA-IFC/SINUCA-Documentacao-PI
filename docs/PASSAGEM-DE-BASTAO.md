@@ -1,16 +1,14 @@
 # SINUCA — passagem de bastão
 
-Atualizado em **25/11/2026**. Este é o ponto de entrada para a próxima equipe: descreve o que existe, como o código funciona, como operar e o que ainda falta. A aplicação tem mural público, histórico do evento, autenticação, gestão de delegações, tarefas, cronogramas, documentos, perfil, chat e notificações. **A avaliação por notas ainda não está implementada.** Algumas telas prontas têm pendências de integração descritas abaixo; tela existente não significa fluxo completo homologado.
+Atualizado em **27/11/2026**. Este é o ponto de entrada para a próxima equipe: descreve o que existe, como o código funciona, como operar e o que ainda falta. A aplicação tem mural público, histórico do evento, autenticação, gestão de delegações, tarefas, cronogramas, documentos, perfil, chat e notificações. **A avaliação por notas ainda não está implementada.** Algumas telas prontas têm pendências de integração descritas abaixo; tela existente não significa fluxo completo homologado.
 
-O código examinado partiu de `SINUCA-FRONT@a309b36` e `SINUCA-BACK@d08c071`. As simplificações desta entrega são alterações locais posteriores a esses commits. Os testes e a consulta ao site publicado não comprovam que essas alterações já foram implantadas.
+## 1. Referências para manutenção
 
-## 1. Onde manter este documento
+Este repositório é a fonte central de funcionamento, requisitos e decisões do SINUCA. Os READMEs do front e do back mantêm instruções de instalação e apontam para este documento.
 
-O destino central recomendado é **`SINUCA-Documentacao-PI/docs/PASSAGEM-DE-BASTAO.md`**. Esse repositório deve reunir situação funcional, regras de negócio, decisões e próximas entregas. Os READMEs do front e do back devem explicar apenas como executar cada parte e apontar para o documento central.
-
-Documento centralizado neste repositório em **27/11/2026**, a partir de `SINUCA-FRONT@15abfa5` e `SINUCA-BACK@12ad22a`. A referência funcional e os resultados de testes abaixo permanecem datados de 25/11/2026; a transferência não representa nova homologação nem confirmação de deploy. Manter esta fonte principal; os repositórios de código apontam para ela. [Recomendações para revisar a documentação PI](REVISAO-DOCUMENTACAO-PI.md) acompanham esta passagem.
-
-Auditorias e planos anteriores em `docs/` são registros históricos. Seus itens precisam ser confrontados com o código atual; não devem ser tratados como uma lista atualizada automaticamente.
+- [Requisitos e regras de negócio](REQUISITOS.md).
+- [Modelo de dados gerado pelo backend](MODELO-DE-DADOS.md).
+- [Revisão da descrição e requisitos anteriores](REVISAO-DOCUMENTACAO-PI.md).
 
 ## 2. Formação de referência e escolhas de manutenção
 
@@ -37,7 +35,7 @@ Fluxo comum: **componente → store ou service → Axios → `/api` → viewset 
 
 `src/plugins/axios.js` define `/api`, acrescenta o JWT e tenta renovar um acesso expirado. O Vite encaminha `/api` ao backend durante desenvolvimento. Em produção, `vercel.json` faz esse encaminhamento antes do fallback do Vue Router para `index.html`. `.env.production` e o destino de `vercel.json` precisam apontar para a mesma API. Variáveis do painel de build podem sobrescrever as do arquivo.
 
-O login Google usa **diretamente a origem da API**, com cookies e CSRF. O callback Google ocorre no backend; passar essa sessão pelo domínio do front pode perder o cookie. Não transformar essas chamadas em chamadas comuns de `/api` sem rever todo o fluxo. [Detalhes de integração](https://github.com/SINUCA-IFC/SINUCA-FRONT/blob/15abfa5140eb397a2d6bc181307641de6cc56296/docs/architecture/INTEGRACAO-FRONT-BACK.md) e [autenticação](https://github.com/SINUCA-IFC/SINUCA-FRONT/blob/15abfa5140eb397a2d6bc181307641de6cc56296/docs/architecture/AUTENTICACAO.md) complementam o código atual.
+O login Google usa **diretamente a origem da API**, com cookies e CSRF. O callback Google ocorre no backend; passar essa sessão pelo domínio do front pode perder o cookie. Não transformar essas chamadas em chamadas comuns de `/api` sem rever todo o fluxo. [Detalhes de integração](https://github.com/SINUCA-IFC/SINUCA-FRONT/blob/main/docs/architecture/INTEGRACAO-FRONT-BACK.md) e [autenticação](https://github.com/SINUCA-IFC/SINUCA-FRONT/blob/main/docs/architecture/AUTENTICACAO.md) complementam o código atual.
 
 ## 4. Pessoas, contas e permissões
 
@@ -71,6 +69,10 @@ O cadastro público utiliza allauth e cria **aluno**, sem delegação. A escolha
 `BoardView.vue` consulta postagens paginadas. Visitantes leem; organizadores têm criação, edição e exclusão, com imagem e feedback. A API de `Post` também é acessível pelo Admin, e a criação pode disparar push. Categoria de postagem não existe como campo de `Post`: não prometer filtro por categoria sem definir o contrato.
 
 `HistoryView.vue` e `components/history/` exibem conteúdo local de `history.json`, com busca e seções. Não dependem de um editor de história no backend. Alterações de conteúdo exigem edição dos arquivos e novo build.
+
+**Tarefa: fotos por edição.** Posicionar o link da pasta do Google Drive com as fotos de cada edição junto ao texto da história daquela mesma edição, com identificação clara do ano (por exemplo, “Fotos da edição 2027”). Reunir os links com a organização, conferir a correspondência entre pasta e edição e testar se o público previsto consegue abrir o álbum. A tarefa ainda está pendente; não criar links fictícios nem misturar fotos de anos diferentes.
+
+**Possibilidade futura: filtro de postagens por ano.** Quando o site acumular mais de um ano de funcionamento, avaliar com Edvanderson a inclusão de um seletor de ano no mural, mantendo acesso às postagens anteriores. Definir se o filtro usa o ano de publicação ou a edição do evento; esses conceitos podem ser diferentes. Aplicar a regra na API e preservar filtro e paginação ao navegar. A funcionalidade ainda não está implementada e não é condição para a estreia em 2027.
 
 ### Cadastro, login e perfil
 
@@ -110,7 +112,7 @@ O backend lista pendentes e aprova por `POST /api/usuarios/{id}/aprovar/`, atrib
 
 O servidor define o criador com o usuário autenticado. A visibilidade considera responsáveis e delegação do criador; a atribuição entre delegações exige superusuário. A ordem manual dentro de uma coluna não é um campo persistido. O status é salvo; uma ordem específica entre cartões pode desaparecer ao recarregar.
 
-`Task.notification` permanece no modelo/contrato como campo legado. O toggle antigo, sem efeito real sobre push, foi removido do front. Não apagar o campo do banco só por estar sem controle na interface: isso exige decisão de contrato e migração.
+`Task.notification` permanece no modelo/contrato como campo legado. O formulário não expõe esse campo como preferência de push. Não apagar o campo do banco só por estar sem controle na interface: isso exige decisão de contrato e migração.
 
 ### Cronogramas
 
@@ -132,11 +134,11 @@ Imagens e PDFs possuem proprietário, limites e validação no servidor. `attach
 
 `ChatView.vue`, `chatStore.js`, `messageService.js` e `DelegationChatList.vue` integram conversas por delegação. Organizador consulta as delegações; aluno vinculado acessa a sua; avaliador e aluno pendente não têm chat. O histórico e os contadores são consultados periodicamente, com intervalos de dez segundos enquanto a página está visível. Não há WebSocket.
 
-`MessageRead` mantém posição de leitura por usuário/delegação. Abrir uma conversa só confirma o histórico efetivamente carregado e visível. Consultar a lista não marca tudo como lido. Marcar como não lida recua a última recebida e fecha a conversa. Os contadores sobrevivem à troca de dispositivo porque estão no banco. [Regras de leitura](https://github.com/SINUCA-IFC/SINUCA-FRONT/blob/15abfa5140eb397a2d6bc181307641de6cc56296/docs/architecture/CHAT-LEITURA.md).
+`MessageRead` mantém posição de leitura por usuário/delegação. Abrir uma conversa só confirma o histórico efetivamente carregado e visível. Consultar a lista não marca tudo como lido. Marcar como não lida recua a última recebida e fecha a conversa. Os contadores sobrevivem à troca de dispositivo porque estão no banco. [Regras de leitura](https://github.com/SINUCA-IFC/SINUCA-FRONT/blob/main/docs/architecture/CHAT-LEITURA.md).
 
 Web Push usa **Push API + VAPID + Service Worker**, sem Firebase. Eventos existentes: nova postagem, novos responsáveis por tarefa, novas mensagens e tarefas atrasadas. O comando de atraso precisa de agendador externo. Recibo por tarefa/responsável/prazo evita repetição de avisos entregues.
 
-Permissão de push deve ser solicitada por ação do usuário; permissão negada depende das configurações do navegador. Mensagens não lidas continuam funcionando sem push. O Service Worker guarda o shell público; **não armazena respostas privadas da API**. A PWA pode abrir o shell sem conexão, mas não oferece edição offline de tarefas ou chat. [Guia de notificações](https://github.com/SINUCA-IFC/SINUCA-FRONT/blob/15abfa5140eb397a2d6bc181307641de6cc56296/docs/NOTIFICACOES.md).
+Permissão de push deve ser solicitada por ação do usuário; permissão negada depende das configurações do navegador. Mensagens não lidas continuam funcionando sem push. O Service Worker guarda o shell público; **não armazena respostas privadas da API**. A PWA pode abrir o shell sem conexão, mas não oferece edição offline de tarefas ou chat. [Guia de notificações](https://github.com/SINUCA-IFC/SINUCA-FRONT/blob/main/docs/NOTIFICACOES.md).
 
 ## 6. Mapa do código e dos dados
 
@@ -196,7 +198,7 @@ pdm install
 
 A configuração local desativa a criação e o uso de ambientes virtuais pelo PDM neste projeto. Executar os comandos da aplicação com `pdm run`, usando as dependências gerenciadas pelo PDM.
 
-`runtime.txt` indica Python 3.13; o projeto declara `>=3.10`, enquanto a revisão de 25/11/2026 utilizou Python 3.14.9. A próxima equipe deve padronizar uma versão em instalação, CI e servidor; os testes daquela revisão não comprovam todas essas versões.
+`runtime.txt` indica Python 3.13; o projeto declara `>=3.10`, e há ambientes locais com versões diferentes. Padronizar a versão em instalação, CI e servidor e executar os testes nessa versão.
 
 No Linux, instalar a biblioteca de sistema `libmagic1` se a validação de arquivos exigir. Criar `.env` local sem reutilizar banco ou credenciais de produção:
 
@@ -228,7 +230,7 @@ pdm run createsuperuser
 pdm run dev
 ```
 
-Esses comandos são para o banco local configurado. Criar turmas, países, categorias e contas administrativas pelo Admin (`http://127.0.0.1:8000/admin/`). O seed antigo incompatível foi removido; não há carga completa e homologada do evento nesta entrega. É necessário registrar um conjunto de dados iniciais mantido pela equipe.
+Esses comandos são para o banco local configurado. Criar turmas, países, categorias e contas administrativas pelo Admin (`http://127.0.0.1:8000/admin/`). Não há carga completa e homologada do evento. É necessário registrar um conjunto de dados iniciais mantido pela equipe.
 
 Executar os comandos adicionais somente quando necessários:
 
@@ -270,15 +272,25 @@ Acessar `http://localhost:5173`. Reiniciar o Vite após alterar variáveis. Sem 
 4. A organização adiciona alunos pendentes pela turma; conferir sucessos e falhas do lote. Retirar vínculo ainda depende da correção da API indicada acima.
 5. A organização publica avisos, cadastra links de apoio e monta cronogramas; atividades compartilhadas precisam de documentos acessíveis a todos os países envolvidos.
 6. Os alunos acompanham tarefas, prazos, materiais e chat; mudanças de status são persistidas pela API.
-7. O responsável pelo servidor agenda `python manage.py notify_overdue_tasks`; não basta deixar o site aberto.
+7. O responsável pelo servidor agenda `pdm run python manage.py notify_overdue_tasks`; não basta deixar o site aberto.
 
 Para testes manuais, criar contas específicas em ambiente de teste. Não colocar senhas de teste ou de administradores em documentação pública. Fazer backup antes de migrações ou operações em lote e testar a restauração em ambiente separado.
 
 ## 10. Publicação e manutenção
 
+### Publicação para o primeiro uso em 2027
+
+**É necessário preparar e realizar um novo deploy para o primeiro uso do site no evento em 2027.** Os endereços de desenvolvimento/publicação já existentes não substituem a entrega de uma versão homologada para essa estreia.
+
+Definir uma **branch específica como origem da publicação**, possivelmente `main`, e confirmar com os responsáveis pela hospedagem qual branch os serviços realmente acompanham. Se o trabalho de preparação ocorrer em uma branch de feature, integrar as alterações na branch escolhida antes do deploy. A escolha de `main` é uma possibilidade, não uma configuração já confirmada. Registrar a branch e o commit publicados tanto no front quanto no back.
+
+Antes da estreia, publicar as versões compatíveis do frontend e backend, aplicar as migrações necessárias e revisar API, domínio, SMTP, Google, VAPID e agendador. Homologar os fluxos principais com contas de teste e validar a atualização da PWA em dispositivos que tenham uma versão anterior. Combinar com Edvanderson a data de liberação, conferir os dados e conteúdos da edição de 2027 e registrar responsáveis, backup e procedimento de retorno à versão anterior.
+
+### Configuração e operação da versão publicada
+
 Front: `npm install` e `npm run build`, publicando `dist/` na Vercel. `npm run preview` só serve o build para conferência; não substitui a API. Conferir rewrite `/api`, fallback das rotas, manifesto, ícones e atualização do Service Worker.
 
-Back: configurar PostgreSQL por `DATABASE_URL`, `SECRET_KEY` própria, `DEBUG=False`, `MODE=DEPLOY`, mídia Cloudinary e estáticos WhiteNoise. O processo web usa Gunicorn. `build.sh` e o `release` do `Procfile` aplicam migrações; verificar qual fase a hospedagem executa antes de eliminar um desses caminhos. O deploy não foi realizado nesta revisão.
+Back: configurar PostgreSQL por `DATABASE_URL`, `SECRET_KEY` própria, `DEBUG=False`, `MODE=DEPLOY`, mídia Cloudinary e estáticos WhiteNoise. O processo web usa Gunicorn. `build.sh` e o `release` do `Procfile` aplicam migrações; verificar qual fase a hospedagem executa antes de eliminar um desses caminhos. Registrar a versão efetivamente publicada e os resultados de homologação.
 
 Para e-mail: configurar backend SMTP, host, porta/TLS, usuário, senha de aplicativo e remetente autorizado no painel do servidor. Para Google: client ID/secret no servidor e callback `https://<backend>/accounts/google/login/callback/`. Nunca colocar segredos em variáveis `VITE_*`.
 
@@ -298,29 +310,27 @@ npm run build
 npm run test:browser
 
 # Back, com dependências instaladas
-python manage.py test --settings=app.settings_test --noinput
-python manage.py check --settings=app.settings_test
-python manage.py makemigrations --check --dry-run --settings=app.settings_test
+pdm run python manage.py test --settings=app.settings_test --noinput
+pdm run python manage.py check --settings=app.settings_test
+pdm run python manage.py makemigrations --check --dry-run --settings=app.settings_test
 ```
 
 `app.settings_test` desliga o carregamento de `.env`, usa banco em memória, e-mail e mídia locais de teste. Não substituir por uma execução inadvertida no banco real. O aviso de VAPID ausente é esperado nesse ambiente isolado. A suíte de navegador usa Chrome, servidor próprio na porta 4174 e API simulada. Não iniciá-la sobre uma porta já ocupada nem editar componentes no meio da execução, pois o HMR pode invalidar o cenário.
 
-Resultado final em 25/11/2026: os dez arquivos de testes do front, lint, build/PWA e **54 testes de navegador passaram**; **185 testes de backend passaram**, sem migrações novas. Os lockfiles preservaram as versões restantes. A única advertência do check isolado foi VAPID ausente, prevista pela configuração de teste. Detalhes no [registro de execução](historico/2026-11-25-passagem-de-bastao.md).
-
-Foram consultados os dois ambientes com `node scripts/check-deployment.js <origem>`: postagens responderam JSON/200 e login vazio JSON/400. Isso confirma encaminhamento básico da API; não comprova login de uma conta, envio de e-mail, Google, entrega push ou operações autenticadas. A navegação pública em celular/desktop também foi conferida separadamente. Os testes com API simulada não identificam sozinhos uma rota que falta no backend, como ocorreu em remoção de participante.
+Registrar os resultados dos testes por versão, com commits, data e ambiente. O verificador `node scripts/check-deployment.js <origem>` confere roteamento básico: JSON/200 nas postagens e JSON/400 no login vazio. Isso não comprova login autenticado, SMTP, Google ou entrega push.
 
 Antes de operar com dados reais, homologar com front e backend reais: cadastro/código/reenvio, Google, expiração/logout, aprovação, tarefas entre contas, edição/exclusão de recursos, chat e push em dispositivos diferentes. Executar também testes em PostgreSQL e backups restauráveis.
 
 ## 12. Problemas e trabalho restante
 
-Os itens são achados de código/integração, separados de configuração que precisa ser confirmada no servidor. Não foram provocadas exclusões nem explorações no ambiente publicado.
+A tabela reúne pendências de código, integração e operação. Confirmar cada item no ambiente utilizado antes de homologar uma versão.
 
 | Prioridade | Situação e evidência | Próxima ação |
 | --- | --- | --- |
 | Alta | Verificação de matrícula em fonte oficial do instituto ainda não implementada; os dados declarados no cadastro não comprovam vínculo institucional. | Integrar consulta autorizada no backend, comprovar titularidade e elegibilidade e impedir habilitação de aluno sem verificação. Definir tratamento de contas existentes e indisponibilidade; ver seção 5. |
 | Alta | Front chama `/usuarios/{id}/remover-delegacao/`, ausente em `core/views/user.py`. Browser mock simula uma ação que o servidor não fornece. | Implementar retirada de vínculo com autorização e regra de tarefas; testar integração real. Não excluir a conta. |
 | Alta | `SECRET_KEY` tem fallback previsível e `ALLOWED_HOSTS=['*']` em `app/settings.py`. Configuração efetiva do servidor não foi inspecionada. | Exigir chave própria no deploy, restringir hosts e revisar `check --deploy`; confirmar segredos reais com o responsável. |
-| Alta | Repositório de documentação contém credenciais de exemplo públicas; `.env.example` do backend também tinha senha literal, esvaziada nesta entrega. | Remover senhas da documentação e trocar credenciais caso tenham sido usadas. Limpar o arquivo atual não resolve cópias ou histórico. |
+| Alta | Credenciais de exemplo já foram incluídas no histórico dos repositórios, embora removidas dos arquivos atuais. | Trocar as credenciais antigas caso tenham sido usadas. Limpar o arquivo atual não resolve cópias ou histórico. |
 | Alta | Inscrição push aceita URL genérica e não limita explicitamente destinos/provedores ou quantidade por usuário (`push_subscription.py`). O servidor envia requisições a esses destinos. | Validar endpoint/chaves, impedir destinos privados/indevidos e limitar registro. Revisar também política de saída da hospedagem. |
 | Média | Transporte push percorre inscrições na requisição original, com timeout por destino (`core/services/push.py`). | Medir volume e mover entrega para processamento separado com repetição controlada, sem exigir nova infraestrutura antes de dimensionar. |
 | Média | Excluir um usuário pode apagar tarefas criadas por ele (`Task.creator` usa CASCADE). | Definir desativação/arquivamento e preservação de autoria/escopo antes de permitir exclusões operacionais. |
@@ -333,17 +343,20 @@ Os itens são achados de código/integração, separados de configuração que p
 | Média | Avaliador e notas não implementados; cadastro controlado/convites de organizadores também incompleto. | Desenvolver o escopo da seção 13 e definir provisionamento de contas. |
 | Planejamento | PDF enviado não é integrado ao fluxo de links; ordem manual do Kanban não persiste; categorias de mural não existem. | Confirmar requisitos antes de acrescentar entidades, campos e telas. |
 | Planejamento | O router não tem tela 404. Atividades do perfil exigem detalhes por tarefa e o chat recarrega histórico inteiro periodicamente; a criação de delegação depende da bandeira em CDN externa. | Acrescentar tratamento de rota desconhecida e medir consultas/volume; planejar paginação incremental e alternativa para a bandeira quando necessário. |
+| Conteúdo | A história de cada edição precisa disponibilizar o álbum de fotos correspondente no Google Drive. | Obter o link com a organização, posicioná-lo junto ao texto da edição e testar identificação do ano e acesso à pasta. |
+| Planejamento | O mural ainda não oferece filtro de postagens por ano. | Avaliar quando houver mais de um ano de funcionamento; validar ano de publicação versus edição com Edvanderson e preservar paginação. |
+| Alta, antes de 2027 | O primeiro uso no evento será em 2027 e exige uma versão publicada e homologada. | Preparar novo deploy de front/back a partir de uma branch específica de publicação, possivelmente main; confirmar a configuração da hospedagem e registrar commits e homologação. |
 | Operação | Cron de atrasos, entrega SMTP/Google/push, backups, restrições de cookies e versão de Python dependem da implantação. | Registrar responsáveis e evidências de homologação; não marcar como resolvido somente por testes locais. |
 
 ## 13. Próximo sistema: avaliador e notas — não implementado
 
-### Requisitos já definidos pelo solicitante
+### Escopo previsto para validação com o cliente
 
 O avaliador selecionará **uma delegação** e registrará notas nas diferentes modalidades/temas, como **mesa de cooperação, desafio gastronômico e debate**. O sistema calculará médias da delegação com base nas notas. A delegação consultará os resultados **separados por tema**, na área correspondente.
 
 A área do avaliador terá **o sistema de avaliação e as páginas já disponíveis ao visitante**, como mural e história. Não terá gestão de delegações/participantes, criação de cronogramas/documentos, Kanban de aluno nem chat da organização. Essa separação precisa existir nos endpoints e nas rotas, além da navegação visível. A restrição institucional de e-mail aparece hoje na interface, mas precisa de decisão e implementação no servidor para o novo fluxo.
 
-Nenhum modelo, migração, endpoint, cálculo ou tela de lançamento foi criado nesta simplificação. O papel `evaluator` e as abas “Notas em construção” não representam esse sistema pronto.
+O fluxo ainda não possui modelos, migrações, endpoints, cálculos nem telas de lançamento. O papel `evaluator` e as abas “Notas em construção” não representam esse sistema pronto.
 
 ### Desenho sugerido para a próxima equipe validar
 
@@ -377,16 +390,14 @@ As decisões abaixo devem ser discutidas com a organização e confirmadas com *
 
 Critérios mínimos de aceite: avaliador não acessa área de aluno/organização; aluno não lança notas; uma delegação não consulta resultados privados de outra; autoria não pode ser falsificada; limites e duplicidade são validados no back; médias cobrem zero válido, decimais, ausência de avaliações e correções; a UI se recupera de falha sem duplicar envio. Homologar com mais de um avaliador e mais de uma delegação.
 
-## 14. O que foi simplificado nesta entrega
+## 14. Manutenção da documentação
 
-No front, foram retirados Firebase e a integração de autenticação órfã, componentes sem consumidor, estados preenchidos com dados fictícios e wrappers/métodos sem chamada. A autenticação continua em allauth/JWT; push continua em VAPID. A remoção da dependência Firebase também retirou suas entradas transitivas do lockfile, sem atualizar as demais versões. O lint voltou a apontar variáveis não usadas, e o Vite deixou de carregar duas vezes a mesma configuração.
-
-No back, foi removido o caminho antigo de cadastro que não era roteado, mantendo o cadastro real allauth; serializers, imports e arquivos vazios sem uso; scripts de população/geração incompatíveis ou sem consumidor; configuração Node vazia e hook que reescrevia `.env` sem que a aplicação usasse o resultado. A dependência JWT duplicada foi consolidada. Migrações e geração de diagrama agora são comandos explícitos. Foram preservados modelos, histórico de migrações, permissões e testes.
-
-Não foi feita reescrita de arquitetura, implantação, carga de dados, remoção de campos públicos do banco nem implementação de notas. As correções funcionais da seção 12 continuam sendo tarefas futuras, salvo onde a própria tabela indica correção nesta entrega.
+Ao alterar funcionalidades, atualizar os requisitos, os contratos técnicos e os critérios de homologação correspondentes. Gerar novamente o diagrama quando houver mudanças nos modelos. Guardar decisões do produto com data e aprovação de Edvanderson. Registrar resultados de testes e deploy por versão, sem incluir transcrições de conversa, credenciais ou planos internos de execução.
 
 ## 15. Ordem sugerida de continuidade
 
-Começar executando o projeto e a suíte isolada, conferindo a configuração sem usar contas reais. Corrigir a retirada de participante e as incompatibilidades de perfil/data; revisar configuração e destinos push antes de ampliar o uso. Em seguida, homologar autenticação e operação com API real e registrar dados iniciais/backup/agendamento.
+Começar executando o projeto e a suíte isolada, conferindo a configuração sem usar contas reais. Alinhar a integração de matrícula com o instituto, corrigir a retirada de participante e as incompatibilidades de perfil/data; revisar configuração e destinos push antes de ampliar o uso. Em seguida, homologar autenticação e operação com API real e registrar dados iniciais/backup/agendamento.
 
 Depois, fechar com Edvanderson, em conjunto com a organização, as decisões de avaliação e as prioridades de novas funcionalidades. Manter contato com o professor para esclarecer dúvidas e registrar sua aprovação antes de implementar um fluxo vertical pequeno: uma modalidade, dois avaliadores e uma delegação, com média conferida. Só ampliar para todas as modalidades após validar permissões e regras de correção/publicação. Por fim, tratar PDF integrado, ordem persistida e outras melhorias confirmadas como requisito.
+
+Para a estreia em 2027, reservar uma etapa de publicação e homologação na branch definida para produção. Completar os links de fotos por edição junto à história; avaliar o filtro anual do mural quando houver conteúdo de mais de um ano de funcionamento.
