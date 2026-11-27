@@ -4,8 +4,7 @@
 - [Revisão recomendada da documentação PI](docs/REVISAO-DOCUMENTACAO-PI.md).
 - [Registro histórico de validação de 25/11/2026](docs/historico/2026-11-25-passagem-de-bastao.md).
 
-# Projeto Integrador - Modelo
-## SINUCA
+# SINUCA - Equipe 2026
 
 Aplicação que tem como objetivo apoiar o desenvolvimento do projeto SINUCA (Simulado Interdiciplinar das Nações Unidas do Campus Araquari), de modo que funcione como ferramenta para a realização do mesmo e que promova a comunicação entre a gestão do projeto e os discentes participantes.
 
